@@ -21,6 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // session设置
 app.use(session({
     secret: 'abscds_90',
+    resave: false,
+    saveUninitialized: true,
     cookie: {
         path: '/',
         httpOnly: true,
