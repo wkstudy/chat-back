@@ -7,7 +7,7 @@ const { uploadImg } = require('../utils/upload')
 /* 注册 */
 router.post('/', uploadImg.single('avatar'), function(req, res, next) {
     const { username, password } = req.body
-    const result = register(username, password, req.file.path)
+    const result = register(username, password, req.file.path.replace(/\\/g, '\\\\'))
     result.then(data => {
         if (data.affectedRows === 1) {
             res.json(
