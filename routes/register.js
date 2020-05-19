@@ -27,8 +27,8 @@ router.post('/', uploadImg.single('avatar'), function(req, res, next) {
 });
 
 /* 用户名唯一 */
-router.post('/verify', function (req, res, next) {
-    const { username } = req.body
+router.get('/verify', function (req, res, next) {
+    const { username } = req.query
     const result = verifyUsername(username)
     result.then(data => {
         if (JSON.stringify(data) === '{}') {
